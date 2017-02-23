@@ -4,8 +4,8 @@ FROM centos:centos7
 # 镜像的作者
 MAINTAINER sunny5156 <sunny5156@qq.com>
 
-# 安装openssh-server和sudo软件包，并且将sshd的UsePAM参数设置成no
-RUN yum install -y openssh-server sudo
+# 安装openssh-server和sudo软件包，并且将sshd的UsePAM参数设置成no,安装net-tools工具
+RUN yum install -y openssh-server sudo net-tools
 RUN sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
 
 # 添加测试用户super，密码super，并且将此用户添加到sudoers里

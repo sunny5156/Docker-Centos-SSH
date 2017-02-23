@@ -27,8 +27,8 @@ RUN yum -y install initscripts;
 
 ADD remi-release-6.rpm /tmp/remi-release-6.rpm
 
-RUN rpm -ivh /tmp/remi-release-6.rpm
-#RUN rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
+#RUN rpm -ivh /tmp/remi-release-6.rpm
+RUN rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-7.rpm
 
 # add nginx repo
 ADD nginx.repo /etc/yum.repos.d/nginx.repo

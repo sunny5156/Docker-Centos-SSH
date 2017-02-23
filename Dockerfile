@@ -1,5 +1,5 @@
 # 选择一个已有的os镜像作为基础
-FROM centos7
+FROM centos:7
 
 # 镜像的作者
 MAINTAINER sunny5156 <sunny5156@qq.com>

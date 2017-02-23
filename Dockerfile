@@ -68,6 +68,5 @@ RUN chmod +x /init.sh
 #RUN firewall-cmd --reload
 # 安装 nginx php
 
-
 EXPOSE 22 80 443
 CMD ["/usr/sbin/sshd", "-D"]

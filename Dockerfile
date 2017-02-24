@@ -60,7 +60,7 @@ RUN chkconfig php-fpm on
 ADD init.sh  /init.sh
 RUN chmod +x /init.sh
 
-#RUN /init.sh
+RUN /init.sh
 
 #Open firewall ports
 #RUN firewall-cmd --permanent --add-service=http

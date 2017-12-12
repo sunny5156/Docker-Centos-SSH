@@ -9,9 +9,12 @@ RUN yum install -y openssh-server sudo net-tools
 RUN sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
 
 # 添加测试用户super，密码super，并且将此用户添加到sudoers里
-RUN useradd super
-RUN echo "super:super" | chpasswd
-RUN echo "super   ALL=(ALL)       ALL" >> /etc/sudoers
+#RUN useradd super
+#RUN echo "super:super" | chpasswd
+#RUN echo "super   ALL=(ALL)       ALL" >> /etc/sudoers
+
+#设置root登陆密码
+RUN echo "root:123456" | chpasswd
 
 # 下面这两句比较特殊，在centos6上必须要有，否则创建出来的容器sshd不能登录
 RUN ssh-keygen -t dsa -f /etc/ssh/ssh_host_dsa_key

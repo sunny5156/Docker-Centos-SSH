@@ -14,7 +14,7 @@ docker run --privileged --restart=always -it -d --name="docker-centos" -p 80:80 
 
 > /sunny/Data/docker-centos 此path自己替换成自己的。
 > 
-> 镜像在DaoCloud上，[daocloud.io/sunny5156/docker-centos-ssh](https://hub.alauda.cn/repos/sunny5156/docker-centos-ssh) 可以根据自己喜好自己创建
+> 镜像在DaoCloud上，[daocloud.io/sunny5156/docker-centos-ssh](http://hub.daocloud.io/repos/e5d424a4-a62c-4bdd-bdd7-c13399447e6b) 可以根据自己喜好自己创建
 
 ## 版本升级
 

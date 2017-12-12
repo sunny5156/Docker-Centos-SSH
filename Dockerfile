@@ -28,9 +28,6 @@ RUN yum -y update; yum clean all
 RUN yum -y install epel-release; yum clean all
 RUN yum -y install initscripts;
 
-ADD remi-release-6.rpm /tmp/remi-release-6.rpm
-
-#RUN rpm -ivh /tmp/remi-release-6.rpm
 RUN rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-7.rpm
 
 # add nginx repo
@@ -45,7 +42,7 @@ RUN pip install supervisor
 RUN yum -y install nginx; yum clean all;
 
 # Install PHP
-RUN yum -y --enablerepo=remi,remi-php56 --skip-broken install php-fpm php-common php-cli php-pdo php-mysql php-gd php-imap php-ldap php-odbc php-opcache php-pear php-xml php-devel php-xmlrpc php-mbstring php-mcrypt php-bcmath php-mhash libmcrypt; yum clean all;
+RUN yum -y --enablerepo=remi,remi-php72 --skip-broken install php-fpm php-common php-cli php-pdo php-mysql php-gd php-imap php-ldap php-odbc php-opcache php-pear php-xml php-devel php-xmlrpc php-mbstring php-mcrypt php-bcmath php-mhash libmcrypt; yum clean all;
 
 # Add the configuration file of the nginx
 ADD nginx.conf /etc/nginx/nginx.conf
@@ -63,7 +60,7 @@ RUN chkconfig php-fpm on
 ADD init.sh  /init.sh
 RUN chmod +x /init.sh
 
-RUN /init.sh
+#RUN /init.sh
 
 #Open firewall ports
 #RUN firewall-cmd --permanent --add-service=http

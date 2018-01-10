@@ -19,3 +19,10 @@ docker run --privileged --restart=always -it -d --name="docker-centos" -p 80:80 
 ## 版本升级
 
 > 灵雀云存在问题,切换至Daocloud
+
+## 登陆docker-centos
+
+```
+ssh -p 2022 root@localhost
+pwd：123456
+```

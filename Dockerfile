@@ -64,10 +64,11 @@ RUN chmod +x /init.sh
 
 #解决安装 amqp扩展失败
 #install rabbitmq-c
-ADD lib/rabbit-c-0.5.2.tar.gz ~/rabbit-c-0.5.2.tar.gz
+RUN cd /root
+ADD lib/rabbit-c-0.5.2.tar.gz /root/rabbit-c-0.5.2.tar.gz
 RUN yun install openssl-devel -y
 RUN tar zxvf rabbitmq-c-0.5.2.tar.gz
-RUN cd rabbitmq-c-0.5.2
+RUN cd /root/rabbitmq-c-0.5.2
 RUN ./configure --prefix=/usr/local/rabbitmq-c
 RUN make
 RUN make install

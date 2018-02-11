@@ -45,7 +45,7 @@ RUN yum install openssl-devel gcc cc wget -y
 RUN yum -y install nginx; yum clean all;
 
 # Install PHP
-RUN yum -y --enablerepo=remi,remi-php72 --skip-broken install php-fpm php-common php-cli php-pdo php-mysql php-gd php-imap php-ldap php-odbc php-opcache php-pear php-xml php-devel php-xmlrpc php-mbstring php-mcrypt php-bcmath php-mhash libmcrypt; yum clean all;
+RUN yum -y --enablerepo=remi,remi-php72 --skip-broken install php-amqp php-fpm php-common php-cli php-pdo php-mysql php-gd php-imap php-ldap php-odbc php-opcache php-pear php-xml php-devel php-xmlrpc php-mbstring php-mcrypt php-bcmath php-mhash libmcrypt; yum clean all;
 
 # Add the configuration file of the nginx
 ADD nginx.conf /etc/nginx/nginx.conf
@@ -69,23 +69,18 @@ RUN chmod +x /init.sh
 #install rabbitmq-c
 RUN echo 'export LC_ALL=C' >> /root/.bashrc 
 RUN source /root/.bashrc 
-RUN cd /root
 COPY lib/rabbitmq-c-0.5.2.tar.gz /var/rabbitmq-c-0.5.2.tar.gz
 RUN tar -zxvf /var/rabbitmq-c-0.5.2.tar.gz -C /var
-RUN cd /var/rabbitmq-c-0.5.2
 RUN /var/rabbitmq-c-0.5.2/configure --prefix=/usr/local/rabbitmq-c
 RUN make
 RUN make install
+RUN rm -rf /var/rabbitmq-c-0.5.2.tar.gz  /var/rabbitmq-c-0.5.2
 
 #install amqp
 RUN echo '/usr/local/rabbitmq-c'|pecl install amqp
 
 # php amqp.so
 RUN echo 'extension=amqp.so' >> /etc/php.ini
-
-# install fish
-RUN yum install fish -y
-RUN chsh -s /usr/bin/fish
 
 #Open firewall ports
 #RUN firewall-cmd --permanent --add-service=http

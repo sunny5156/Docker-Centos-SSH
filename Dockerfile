@@ -38,6 +38,9 @@ RUN yum install -y python-setuptools; yum clean all
 RUN easy_install pip
 RUN pip install supervisor
 
+#install openssl-devel
+RUN yum install openssl-devel -y
+
 # Install nginx
 RUN yum -y install nginx; yum clean all;
 
@@ -65,10 +68,9 @@ RUN chmod +x /init.sh
 #解决安装 amqp扩展失败
 #install rabbitmq-c
 RUN cd /root
-ADD lib/rabbitmq-c-0.5.2.tar.gz /root/rabbitmq-c-0.5.2.tar.gz
-RUN yum install openssl-devel -y
-RUN tar -zxvf /root/rabbitmq-c-0.5.2.tar.gz -C /root
-RUN cd /root/rabbitmq-c-0.5.2
+ADD lib/rabbitmq-c-0.5.2.tar.gz /var/rabbitmq-c-0.5.2.tar.gz
+RUN tar -zxvf /var/rabbitmq-c-0.5.2.tar.gz -C /var
+RUN cd /var/rabbitmq-c-0.5.2
 RUN ./configure --prefix=/usr/local/rabbitmq-c
 RUN make
 RUN make install

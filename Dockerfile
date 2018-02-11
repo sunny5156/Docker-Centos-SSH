@@ -38,8 +38,8 @@ RUN yum install -y python-setuptools; yum clean all
 RUN easy_install pip
 RUN pip install supervisor
 
-#install openssl-devel
-RUN yum install openssl-devel -y
+#install openssl-devel gcc cc wget
+RUN yum install openssl-devel gcc cc wget -y
 
 # Install nginx
 RUN yum -y install nginx; yum clean all;

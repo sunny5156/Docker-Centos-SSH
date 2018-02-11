@@ -68,7 +68,7 @@ RUN chmod +x /init.sh
 #解决安装 amqp扩展失败
 #install rabbitmq-c
 RUN cd /root
-ADD lib/rabbitmq-c-0.5.2.tar.gz /var/rabbitmq-c-0.5.2.tar.gz
+COPY lib/rabbitmq-c-0.5.2.tar.gz /var/rabbitmq-c-0.5.2.tar.gz
 RUN tar -zxvf /var/rabbitmq-c-0.5.2.tar.gz -C /var
 RUN cd /var/rabbitmq-c-0.5.2
 RUN ./configure --prefix=/usr/local/rabbitmq-c

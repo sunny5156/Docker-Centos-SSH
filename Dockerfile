@@ -67,7 +67,7 @@ RUN chmod +x /init.sh
 RUN cd /root
 ADD lib/rabbitmq-c-0.5.2.tar.gz /root/rabbitmq-c-0.5.2.tar.gz
 RUN yum install openssl-devel -y
-RUN tar zxvf rabbitmq-c-0.5.2.tar.gz
+RUN tar -zxvf /root/rabbitmq-c-0.5.2.tar.gz -C /root
 RUN cd /root/rabbitmq-c-0.5.2
 RUN ./configure --prefix=/usr/local/rabbitmq-c
 RUN make

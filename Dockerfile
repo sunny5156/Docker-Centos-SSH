@@ -71,7 +71,7 @@ RUN cd /root
 COPY lib/rabbitmq-c-0.5.2.tar.gz /var/rabbitmq-c-0.5.2.tar.gz
 RUN tar -zxvf /var/rabbitmq-c-0.5.2.tar.gz -C /var
 RUN cd /var/rabbitmq-c-0.5.2
-RUN ./configure --prefix=/usr/local/rabbitmq-c
+RUN /var/rabbitmq-c-0.5.2/configure --prefix=/usr/local/rabbitmq-c
 RUN make
 RUN make install
 
